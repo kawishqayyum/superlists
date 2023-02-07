@@ -10,7 +10,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def tearDown(self):
         self.browser.close()
-    
+
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Edith has heard about a cool new online to-do app.
         # She goes # to check out its homepage
@@ -54,6 +54,7 @@ class NewVisitorTest(unittest.TestCase):
         # She visits that URL - her to-do list is still there. 
 
         # # Satisfied, she goes back to sleep
+
 
 if __name__ == '__main__':
     unittest.main(warnings='ignore')
