@@ -155,4 +155,7 @@ cython_debug/
 # macOS
 .DS_Store
 
+# VS CODE
+.vscode
+
 TODO.md
