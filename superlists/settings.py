@@ -25,10 +25,7 @@ SECRET_KEY = 'django-insecure-4avd*n_j2k0kp92sp-xc58s8zz=(ggn--r2g+3^+c+mt9_o%v*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = [
-    'superlists-staging.kawi.sh'
-]
-
+ALLOWED_HOSTS = ['superlists-staging.kawi.sh']
 
 # Application definition
 
