@@ -46,8 +46,8 @@ def _get_latest_source(c, source_folder):
 @task
 def _update_settings(c, source_folder):
     settings_path = source_folder + '/superlists/settings.py'
-    c.run(f'sed -i \'s/DEBUG = True/DEBUG = False/\' {settings_path}')
-    c.run(f'sed -i \'s/ALLOWED_HOSTS = .*$/ALLOWED_HOSTS = ["{c.host}"]/\' {settings_path}')
+    c.run(f'sed -i \'s/DEBUG = True/DEBUG = False/g\' {settings_path}')
+    c.run(f'sed -i \'s/ALLOWED_HOSTS = .*$/ALLOWED_HOSTS = ["{c.host}"]/g\' {settings_path}')
 
     secret_key_file = source_folder + '/superlists/secret_key.py'
 
@@ -108,9 +108,8 @@ def _setup_gunicorn(c, source_folder):
     gunicorn_service = f'/etc/systemd/system/gunicorn-{c.host}.service'
 
     if not exists(c, gunicorn_service):
-        print(5*'*#*#*#', 'I wasn\'t here right?')
         c.sudo(
-            f'sed \'s/SITENAME/{c.host}/\' {gunicorn_conf} | sudo tee {gunicorn_service}'
+            f'sed \'s/SITENAME/{c.host}/g\' {gunicorn_conf} | sudo tee {gunicorn_service}'
         )
 
     c.sudo(f'sudo systemctl enable gunicorn-{c.host}')
